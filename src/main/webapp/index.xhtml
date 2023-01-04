@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+</h:head>
+
+<div class="container">
+    <!-- Header -->
+    <div class="navbar navbar-light bg-light">
+        <span class="strong">Table</span>
+    </div>
+
+
+    <!-- countryRepository part -->
+    <div>
+        <h:dataTable value="#{gapMinderService.years}" var="year" styleClass="table table-light">
+            <h:column>
+                <f:facet name="country">Name</f:facet>
+                <h:link outcome="oneYear.xhtml" value="#{year}">
+                    <f:param value="#{year}" name="year"/>
+                </h:link>
+            </h:column>
+        </h:dataTable>
+    </div>
+
+    <div>
+        <h:dataTable value="#{gapMinderService.continents}" var="continent" styleClass="table table-light table-striped">
+            <h:column>
+                <f:facet name="continent">Continent</f:facet>
+                #{continent.country}
+            </h:column>
+
+            <h:column>
+                <f:facet name="lifeExp">LifeExp</f:facet>
+                #{continent.lifeExp}
+            </h:column>
+        </h:dataTable>
+    </div>
+</div>
+</html>
